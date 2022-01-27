@@ -1,0 +1,89 @@
+<!--
+A web app that lively plots data from a Firebase Realtime Database node, thanks to plotly.js
+-->
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>RIO203-Project</title>
+	<link rel="stylesheet" href="style.css">
+
+	<!-- Firebase App is always required and must be first -->
+	<script src="https://www.gstatic.com/firebasejs/5.5.9/firebase-app.js"></script>
+	<!-- Add additional services that you want to use -->
+	<script src="https://www.gstatic.com/firebasejs/5.5.9/firebase-database.js"></script>
+
+	<!-- Include Plotly.js -->
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	<!-- Include the moment.js library -->
+	<script src="https://momentjs.com/downloads/moment.js"></script>
+</head>
+
+<body>
+	<header>
+        <a href="#" class="logo">RIO3-Project<span>.</span></a>
+        <div class="menuToggle" onclick="menuToggle();"></div>
+        <ul class="navigation">
+            <li><a href="#banner" onclick="menuToggle();">Home</a></li>
+            <li><a href="#about" onclick="menuToggle();">About</a></li>
+            <li><a href="#graph1" onclick="menuToggle();">Pressure-graph</a></li>
+			<li><a href="#graph2" onclick="menuToggle();">Realtime-graph</a></li>
+
+        </ul>
+    </header>
+
+	<section class="banner" id="banner">
+        <div class="content">
+            <!-- <a href='#menu' class="btn">go</a> -->
+        </div>
+    </section>
+
+	<section class="about" id="about">
+        <div class="row">
+            <div class="col50">
+                <h2 class="titleText"><span>A</span>bout Us</h2>
+					<p>asdasdasd sadasdad</p>
+			</div>
+            <div class="col50">
+                <div class="imgBx">
+                    <img src="assets/img1.jpg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+	<section class="about" id="graph1">
+
+		<!-- Plotly chart will be drawn inside this div. -->
+		<div id="myPlot" style="width: 85vw; max-height:75vh"></div>
+
+	</section>	
+
+
+	<!-- <p style="text-align: center; margin: 0">
+		<b>ESP8266 rocks! </b>Read the full stories on
+		<a target="_blank" href="https://medium.com/@o.lourme">Medium</a>
+		and <a target="_blank" href="https://github.com/olivierlourme/esp8266webapp">Github</a>.
+	</p> -->
+	<!-- Include the script describing the work to do -->
+	<script src="script.js"></script>
+	<script type="text/javascript">
+        window.addEventListener('scroll',function(){
+            const header = document.querySelector('header');
+            header.classList.toggle("sticky", window.scrollY >0);
+        })
+
+        function menuToggle(){
+            const menuToggle = document.querySelector('.menuToggle');
+            const navigation = document.querySelector('.navigation');
+            menuToggle.classList.toggle('active');
+            navigation.classList.toggle('active');
+
+        }
+    </script>
+</body>
+
+</html>
