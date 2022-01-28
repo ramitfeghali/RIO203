@@ -29,8 +29,8 @@ A web app that lively plots data from a Firebase Realtime Database node, thanks 
         <ul class="navigation">
             <li><a href="#banner" onclick="menuToggle();">Home</a></li>
             <li><a href="#about" onclick="menuToggle();">About</a></li>
-            <li><a href="#graph1" onclick="menuToggle();">Pressure-graph</a></li>
-			<li><a href="#graph2" onclick="menuToggle();">Realtime-graph</a></li>
+            <li><a href="#graph1" onclick="menuToggle();">Temperature-graph</a></li>
+			<li><a href="#graph2" onclick="menuToggle();">Pressure-graph</a></li>
 
         </ul>
     </header>
@@ -55,12 +55,25 @@ A web app that lively plots data from a Firebase Realtime Database node, thanks 
         </div>
     </section>
 
-	<section class="about" id="graph1">
+	<section class="plot" id="graph1">
 
 		<!-- Plotly chart will be drawn inside this div. -->
-		<div id="myPlot" style="width: 85vw; max-height:75vh"></div>
+		<div id="T-Plot" style="width: 90vw; max-height:75vh"></div>
 
 	</section>	
+
+
+    <section class="plot" id="graph2">
+
+		<!-- Plotly chart will be drawn inside this div. -->
+		<div id="P-Plot" style="width: 90vw; max-height:75vh"></div>
+
+	</section>	
+
+
+    <div class="copyrightText">
+        <p>Copyright 2022 <a ref="#">RIO203-TELECOM</a>. All Right Reserved</p>
+    </div>
 
 
 	<!-- <p style="text-align: center; margin: 0">

@@ -44,7 +44,8 @@ firebase.database().ref('account/email_password/DATA').limitToLast(nbOfElts).on(
 
     // We prepare empty arrays to welcome timestamps and luminosity values:
     let timestamps = [];
-    let values = [];
+    let Tvalues = [];
+    let Pvalues = [];
 
     // Next, we iterate on each element of the 'ts_measures' raw Object
     // in order to fill the arrays.
@@ -59,21 +60,64 @@ firebase.database().ref('account/email_password/DATA').limitToLast(nbOfElts).on(
     ts_measures.forEach(ts_measure => {
         //console.log(ts_measure.val().timestamp, ts_measure.val().value);
         timestamps.push(moment.unix(ts_measure.val().timestamp).format('YYYY-MM-DD HH:mm:ss'));
-        values.push(ts_measure.val().Temp);
+        Tvalues.push(ts_measure.val().Temp);
+        Pvalues.push(ts_measure.val().Temp);
     });
 
     // Get a reference to the DOM node that welcomes the plot drawn by Plotly.js:
-    myPlotDiv = document.getElementById('myPlot');
+    myPlotDiv = document.getElementById('T-Plot');
 
     // We generate x and y data necessited by Plotly.js to draw the plot
     // and its layout information as well:
     // See https://plot.ly/javascript/getting-started/
     const data = [{
         x: timestamps,
-        y: values
+        y: Tvalues
     }];
 
     const layout = {
+        title: '<b>temperature</b>',
+        titlefont: {
+            family: 'Courier New, monospace',
+            size: 16,
+            color: '#000'
+        },
+        xaxis: {
+            linecolor: 'black',
+            linewidth: 2
+        },
+        yaxis: {
+            title: '<b>Celsius</b>',
+            titlefont: {
+                family: 'Courier New, monospace',
+                size: 14,
+                color: '#000'
+            },
+            linecolor: 'black',
+            linewidth: 2,
+        },
+        margin: {
+            r: 50,
+            pad: 0
+        }
+    }
+    // At last we plot data :-)
+    Plotly.newPlot(myPlotDiv, data, layout, { responsive: true });
+
+
+
+
+    myPlotDivP = document.getElementById('P-Plot');
+
+    // We generate x and y data necessited by Plotly.js to draw the plot
+    // and its layout information as well:
+    // See https://plot.ly/javascript/getting-started/
+    const dataP = [{
+        x: timestamps,
+        y: Pvalues
+    }];
+
+    const layoutP = {
         title: '<b>pressure</b>',
         titlefont: {
             family: 'Courier New, monospace',
@@ -100,6 +144,10 @@ firebase.database().ref('account/email_password/DATA').limitToLast(nbOfElts).on(
         }
     }
     // At last we plot data :-)
-    Plotly.newPlot(myPlotDiv, data, layout, { responsive: true });
+    Plotly.newPlot(myPlotDivP, dataP, layoutP, { responsive: true });
+
+
+
+ 
 });
 
