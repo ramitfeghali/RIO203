@@ -45,7 +45,7 @@ firebase.database().ref('account/email_password/DATA').limitToLast(nbOfElts).on(
     // We prepare empty arrays to welcome timestamps and luminosity values:
     let timestamps = [];
     let Tvalues = [];
-    let Pvalues = [];
+    let Gvalues = [];
 
     // Next, we iterate on each element of the 'ts_measures' raw Object
     // in order to fill the arrays.
@@ -61,7 +61,7 @@ firebase.database().ref('account/email_password/DATA').limitToLast(nbOfElts).on(
         //console.log(ts_measure.val().timestamp, ts_measure.val().value);
         timestamps.push(moment.unix(ts_measure.val().timestamp).format('YYYY-MM-DD HH:mm:ss'));
         Tvalues.push(ts_measure.val().Temp);
-        Pvalues.push(ts_measure.val().Temp);
+        Gvalues.push(ts_measure.val().gas_level);
     });
 
     // Get a reference to the DOM node that welcomes the plot drawn by Plotly.js:
@@ -114,11 +114,11 @@ firebase.database().ref('account/email_password/DATA').limitToLast(nbOfElts).on(
     // See https://plot.ly/javascript/getting-started/
     const dataP = [{
         x: timestamps,
-        y: Pvalues
+        y: Gvalues
     }];
 
     const layoutP = {
-        title: '<b>pressure</b>',
+        title: '<b>Gas level</b>',
         titlefont: {
             family: 'Courier New, monospace',
             size: 16,
@@ -129,7 +129,7 @@ firebase.database().ref('account/email_password/DATA').limitToLast(nbOfElts).on(
             linewidth: 2
         },
         yaxis: {
-            title: '<b>Pa</b>',
+            title: '<b>ppm</b>',
             titlefont: {
                 family: 'Courier New, monospace',
                 size: 14,
