@@ -76,7 +76,7 @@ firebase.database().ref('account/email_password/DATA').limitToLast(nbOfElts).on(
     }];
 
     const layout = {
-        title: '<b>temperature</b>',
+        title: '<b>Temperature</b>',
         titlefont: {
             family: 'Courier New, monospace',
             size: 16,
@@ -129,7 +129,7 @@ firebase.database().ref('account/email_password/DATA').limitToLast(nbOfElts).on(
             linewidth: 2
         },
         yaxis: {
-            title: '<b>ppm</b>',
+            title: '<b>Ppm</b>',
             titlefont: {
                 family: 'Courier New, monospace',
                 size: 14,
